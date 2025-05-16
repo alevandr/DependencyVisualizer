@@ -4,7 +4,6 @@
 *.sdf
 *.opensdf
 *.tlog
-*.vcxproj*
 *.json
 *.lnk
 .vs/
