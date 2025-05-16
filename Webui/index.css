@@ -1,0 +1,243 @@
+body{
+    overflow: hidden;
+    margin: 0;
+    background-color: #D9D9D9;
+}
+/* div{    
+    border-style: dashed;
+    border-width: 3px;
+    border-color: coral;
+} */
+.navBar{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: #4C6E68;
+}
+.navElement{
+    display: inline-block;
+    vertical-align: top;
+}
+.dropDownMenu{
+    height: 50px;
+    width: 50px;
+    border: 0;
+    padding: 0;
+    background: rgba(15, 7, 7, 0.2);
+    color: #FFFFFF;
+}
+.dropDownMenu:hover{
+    background: rgba(15, 7, 7, 0.1);;
+}
+.dropContent{
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropContentButton{
+    height: 40px;
+    width: 220px;
+    float: none;
+    display: block;
+    text-align: left;
+    background-color: #4C6E68;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.dropContentButton:hover{
+    background-color: #7E9A9A;
+}
+.navButton{
+    height: 50px;
+    width: 250px;
+    border: 0;
+    padding: 0;
+    background: rgba(15, 7, 7, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.navButton:hover{
+    background: rgba(15, 7, 7, 0.1);;
+}
+.projectNameBar{
+    height: 20px;
+    min-height: fit-content;
+    padding: 5px;
+    background-color: #7E9A9A;
+}
+.projectNameSpan{
+    vertical-align: middle;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.sdBar{
+    height: 20px;
+    min-height: fit-content;
+    padding: 5px;
+    background-color: #698080;
+}
+.sdSpan{
+    vertical-align: middle;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.sdInput{
+    vertical-align: middle;
+    border: none;
+    border-radius: 5px;
+}
+.contextMenu{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    width: 200px;
+}
+.contextMenuButton{
+    width: 100%;
+    text-align: left;
+    background-color: #7E9A9A;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+/* .graphContainer{
+
+} */
+.canvas{
+    height: 100%;
+    width: 100%;
+}
+.infoMessageContainer{
+    display: none;
+    position: fixed;
+    z-index: 5;
+    width: 250px;
+    transition: opacity 1s ease-in-out;
+    
+    background-color: #698080;
+    border-radius: 3px;
+}
+.infoHeaderBar{
+    background-color: #7E9A9A;
+    margin: 0;
+}
+.infoHeader{
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.infoMessageCloseButton{
+    background-color: transparent;
+    border: none;
+    float: right;
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.infoMessageCloseButton:hover{
+    background-color: #4C6E68;
+    border-radius: 3px;
+}
+.infoMessageBar{
+    margin: 5px;
+}
+.infoMessage{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+.graphLegend{
+    background-color: gray; /* think about what 'gray' can be replace wtih */
+    display: none;
+    position: fixed;
+    padding: 5px;
+    width: 250px; /* or should i make it 300px? */
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+.graphLegend li{
+    list-style-type: none;
+    padding-left: 5px;
+}
+.legendSpan{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+#loading-overlay-container{
+    display: block; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999;
+}
+#loading-overlay-message{
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+#new-project-name-container{
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+}
+#new-project-name-box{
+    padding: 10px;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    background: #4C6E68;
+    text-align: center;
+    border-radius: 5px;
+}
+#new-project-name-input{
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #7E9A9A;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.projectNameButton{
+    width: 100px;
+    margin-top: 20px;
+    background-color: #698080;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.show{
+    display: block;
+}
+.disabled{
+    background-color:gray;
+}
+.disabled:hover{
+    background-color: gray;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<meta content="utf-8" http-equiv="encoding">
+<head>
+    <title>Dependecy visualizer</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="loading-overlay-container">
+    <div id="loading-overlay-message">Loading...</div>
+</div>
+<div id="new-project-name-container">
+    <div id="new-project-name-box">
+        <input id="new-project-name-input" type="text" autocomplete="off">
+        <br>
+        <button class="projectNameButton" id="apply-new-project-name">apply</button>
+        <button class="projectNameButton" id="cancel-new-project-name">cancel</button>
+    </div>
+</div>
+<div class="navBar">
+        <div class="navElement"><button class="dropDownMenu" id="drop-down-button">=</button></div>
+        <div class="dropContent" id="drop-down-menu-container">
+            <button class="dropContentButton" id="change-project-name">Change project name</button>
+            <button class="dropContentButton" id="get-graph-from-file">Get graph from file</button>
+            <button class="dropContentButton" id="select-new-project">Select new project</button>
+            <button class="dropContentButton" id="clear-storage">Clear storage</button>
+            <button class="dropContentButton" id="show-legend">Show legend</button>
+            <button class="dropContentButton" id="save-graph">Save graph</button>
+        </div>
+        <div class="navElement"><button class="navButton" id="update-graph">Update graph</button></div>
+        <div class="navElement"><button class="navButton" id="highlight-path">Highlight path</button></div>
+        <div class="navElement"><button class="navButton" id="default-appearance">Default appearance</button></div>
+</div>
+<div class="projectNameBar">
+    <span class="projectNameSpan" id="catalog-name">Project:</span>
+</div>
+<div class="sdBar" id="sd-bar">
+    <span class="sdSpan">Source:</span>
+    <input class="sdInput" list="allNodesNames" name="source" id="node-source">
+    <span class="sdSpan">Destination:</span>
+    <input class="sdInput" list="allNodesNames" name="destination" id="node-destination">
+
+    <datalist id="allNodesNames"></datalist>
+</div>
+<div class="contextMenu" id="context-menu">
+    <div><button class="contextMenuButton" id="clear-source">Clear source</button></div>
+    <div><button class="contextMenuButton" id="clear-destination">Clear destination</button></div>
+    <div><button class="contextMenuButton" id="clear-both">Clear both</button></div>
+</div>
+<div class="graphContainer" id="graph">
+    <svg class="canvas" id="canvas-id"></svg>
+</div>
+<div class="infoMessageContainer" id="info-message-box">
+    <div class="infoHeaderBar">
+        <span class="infoHeader">Information</span>
+        <button class="infoMessageCloseButton" id="close-message">x</button>
+    </div>
+    <div class="infoMessageBar">
+        <span class="infoMessage" id="info-message-span"></span>
+    </div>
+</div>
+<div class="graphLegend" id="graph-legend">
+</div>
+</body>
+<script src="d3.js"></script>
+<script src="index.js" type="module"></script>
+</html>
