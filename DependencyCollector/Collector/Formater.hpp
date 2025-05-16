@@ -16,7 +16,7 @@ namespace dc
 	class Formater
 	{
 	public:
-		map<Node, vector<Node>> formatData(const vector<pair<string, vector<string>>>& rawData) const
+		static map<Node, vector<Node>> formatData(const vector<pair<string, vector<string>>>& rawData)
 		{
 			auto getCleanInclude = [](const string& rawInclude)
 				{

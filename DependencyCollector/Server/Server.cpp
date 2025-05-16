@@ -1,4 +1,5 @@
 #pragma once
+
 #include "httplib.h"
 #include "pch.h"
 
@@ -55,14 +56,12 @@ private:
             serializer.serialize(currentDependencies, fileName);
             res->status = 200;
             res->set_content("Graph was successfully saved", "text/plain");
-            return;
         }
         else 
         {
             //DWORD error = CommDlgExtendedError();
             res->status = 500;
             res->set_content("Graph was not saved", "text/plain");
-            return;
         }
     }
 
@@ -173,8 +172,7 @@ public:
             }
             dc::Reader reader;
             vector<pair<string, vector<string>>> rawData = reader.getRawData(config["catalog"]); // <file_path, <raw includes>>
-            dc::Formater formater;
-            currentDependencies = formater.formatData(rawData); // <Node, <Links_To_Other_Nodes>>
+            currentDependencies = dc::Formater::formatData(rawData); // <Node, <Links_To_Other_Nodes>>
             dc::Serializer serializer;
             auto json = serializer.serialize(currentDependencies);
             res.set_content(json, "text");

@@ -18,7 +18,7 @@ namespace dc
 	class Reader
 	{
 	public:
-		vector<std::pair<string, vector<string>>> getRawData(const string& directoryPath) const
+		vector<pair<string, vector<string>>> getRawData(const string& directoryPath) const
 		{
 			vector<pair<string, vector<string>>> rawData;
 			using recursive_directory_iterator = std::filesystem::recursive_directory_iterator;
