@@ -168,7 +168,10 @@ public:
 
         svr.Get("/update-graph", [&](const httplib::Request& req, httplib::Response& res) {
             std::ifstream f("config.json");
-            this->config = nlohmann::json::parse(f);
+            if (!f.fail())
+            {
+                this->config = nlohmann::json::parse(f);
+            }
             dc::Reader reader;
             vector<pair<string, vector<string>>> rawData = reader.getRawData(config["catalog"]); // <file_path, <raw includes>>
             dc::Formater formater;
