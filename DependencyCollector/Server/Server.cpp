@@ -7,7 +7,6 @@
 
 #include <shellapi.h>
 #include <ShlObj.h>
-#include <iostream>
 #include <string>
 #include <thread>
 #include <json.hpp>
