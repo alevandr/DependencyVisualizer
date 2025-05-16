@@ -170,7 +170,8 @@ public:
             {
                 this->config = nlohmann::json::parse(f);
             }
-            vector<pair<string, vector<string>>> rawData = dc::Reader::getRawData(config["catalog"]); // <file_path, <raw includes>>
+            dc::Reader reader;
+            vector<pair<string, vector<string>>> rawData = reader.getRawData(config["catalog"]); // <file_path, <raw includes>>
             currentDependencies = dc::Formater::formatData(rawData); // <Node, <Links_To_Other_Nodes>>
             dc::Serializer serializer;
             auto json = serializer.serialize(currentDependencies);
