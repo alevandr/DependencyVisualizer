@@ -198,7 +198,10 @@ public:
     {
         winrt::init_apartment();
         std::ifstream f("config.json");
-        this->config = nlohmann::json::parse(f);
+        if (!f.fail())
+        {
+            this->config = nlohmann::json::parse(f);
+        }
     };
     ~WebServer() {};
 };
