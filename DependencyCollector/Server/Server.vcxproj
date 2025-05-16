@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\reynd\Desktop\pet projects\libraries\boost_1_82_0;C:\Users\reynd\Desktop\pet projects\dependencies visualizer\DependencyCollector\Collector;C:\Users\reynd\Desktop\pet projects\Dependencies Visualizer\DependencyCollector\Server\libs\cpp-httplib;C:\Users\reynd\Desktop\pet projects\Dependencies Visualizer\DependencyCollector\Server\libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\libraries\boost_1_82_0;..\Collector;$(SolutionDir)\libs\cpp-httplib;$(SolutionDir)\libs\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
