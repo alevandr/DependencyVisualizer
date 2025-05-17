@@ -55,13 +55,13 @@ namespace dc
 			string LinksArr;
 			LinksArr += "\"linksArr\":[\n";
 			map<string, vector<string>> allLinks;
-			for (auto [node, links] : data)
+			for (const auto& [node, links] : data)
 			{
 				if (!allLinks.contains(node.id))
 				{
 					allLinks.insert({ node.id, {} });
 				}
-				for (auto link : links)
+				for (const auto& link : links)
 				{
 					allLinks[node.id].emplace_back(link.id);
 					if (!allLinks.contains(link.id))
@@ -71,7 +71,7 @@ namespace dc
 					allLinks[link.id].emplace_back(node.id);
 				}
 			}
-			for (auto [node, links] : allLinks)
+			for (const auto& [node, links] : allLinks)
 			{
 				LinksArr += "{";
 				LinksArr += "\"source\": \"" + node + "\", ";
