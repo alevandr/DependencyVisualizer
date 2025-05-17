@@ -8,7 +8,6 @@ const updateGraph = document.getElementById('update-graph');
 updateGraph.addEventListener('click', async () => {
   if(!helper.getProjectFolder())
   {
-    console.log(helper.getProjectFolder());
     await helper.selectProjectFolder();
   }
   helper.showLoadingOverlay();

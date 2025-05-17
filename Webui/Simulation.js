@@ -45,12 +45,13 @@ class Simulation
     {
       helper.shortNames.set(helper.removePrefix(prefix, node.name), node.name)
     }
-
-    let nodesNames = document.getElementById('allNodesNames');
+    let options = '';
     for (const name of helper.shortNames)
     {
-      nodesNames.innerHTML += `<option>${name[0]}</option>`; // value="${node.name}"
+      options += `<option>${name[0]}</option>`; // value="${node.name}"
     }
+    let nodesNames = document.getElementById('all-nodes-names');
+    nodesNames.innerHTML = options;
   }
   clear()
   {
@@ -64,7 +65,7 @@ class Simulation
     if (helper.shortNames)
     {
       helper.shortNames.clear();
-      let nodesNames = document.getElementById('allNodesNames');
+      let nodesNames = document.getElementById('all-nodes-names');
       nodesNames.innerHTML = '';
     }
     if(helper.pathNodes)

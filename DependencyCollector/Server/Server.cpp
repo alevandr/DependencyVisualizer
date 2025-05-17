@@ -22,10 +22,24 @@ private:
         return formatedPath;
     };
 
+    void CreateConfig() 
+    {
+        nlohmann::json newConfig = {
+            {"catalog", FormatPath(std::filesystem::current_path().string())}
+        };
+
+        std::ofstream o("config.json");
+        o << std::setw(4) << newConfig << std::endl;
+    }
+
     void SaveCatalog(std::string catalogName)
     {
         // load cofing
         std::ifstream f("config.json");
+        if (f.fail())
+        {
+            CreateConfig();
+        }
         nlohmann::json config = nlohmann::json::parse(f);
 
         // change config
@@ -170,6 +184,10 @@ public:
             {
                 this->config = nlohmann::json::parse(f);
             }
+            else
+            {
+                CreateConfig();
+            }
             dc::Reader reader;
             vector<pair<string, vector<string>>> rawData = reader.getRawData(config["catalog"]); // <file_path, <raw includes>>
             currentDependencies = dc::Formater::formatData(rawData); // <Node, <Links_To_Other_Nodes>>
@@ -201,6 +219,10 @@ public:
         if (!f.fail())
         {
             this->config = nlohmann::json::parse(f);
+        }
+        else
+        {
+            CreateConfig();
         }
     };
     ~WebServer() {};

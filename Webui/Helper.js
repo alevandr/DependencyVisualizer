@@ -174,7 +174,7 @@ class Helper
       this.setGraphLoadedFromFile(false);
     })
     .catch(error => {
-      console.error('Error:', error);
+      helper.message('Error:', error);
     });
   };
 
