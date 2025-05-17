@@ -22,7 +22,7 @@ updateGraph.addEventListener('click', async () => {
     localStorage.setItem('data', dataTxt);
   })
   .catch(error => {
-    helper.message('Graph was NOT updated');
+    helper.message('Graph was NOT updated: ' + error);
   })
   .finally(() => {
     helper.hideLoadingOverlay();

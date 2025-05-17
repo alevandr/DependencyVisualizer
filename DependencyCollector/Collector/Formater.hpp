@@ -36,6 +36,10 @@ namespace dc
 				{
 					if (cleanInclude.find(':') != std::string::npos)
 						return cleanInclude;
+					if (cleanInclude.find('\\') != std::string::npos);
+					{
+						boost::replace_all(const_cast<std::string&>(cleanInclude), "\\", "/");
+					}
 
 					vector<string> current;
 					boost::split(current, filePath, boost::is_any_of("/"));

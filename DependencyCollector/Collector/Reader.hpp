@@ -36,6 +36,7 @@ namespace dc
 				catch (const std::exception& e)
 				{
 					auto err = e.what();
+					continue;
 				}
 				for (size_t i = 0; i < path.size() - 1; i++)
 				{
@@ -47,12 +48,12 @@ namespace dc
 					if (extension == ".cpp" || extension == ".hpp" || extension == ".h")
 					{
 						rawData.emplace_back(path, getIncludesFromFile(path));
-						//cout << dirEntry.path().string() << endl;
 					}
 				}
 				catch (const std::exception& e)
 				{
 					auto err = e.what();
+					continue;
 				}
 			}
 			return rawData;
