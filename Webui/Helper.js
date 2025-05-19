@@ -3,6 +3,7 @@ class Helper
   static shortNames;
   static pathNodes;
   static mutuallyLinkedNodes;
+  static groups;
   #_graphLoadedFromFile;
   #_sourceNodeName;
   #_destinationNodeName;
@@ -13,6 +14,7 @@ class Helper
     this.shortNames = new Map();
     this.pathNodes = [];
     this.mutuallyLinkedNodes = [];
+    this.groups = new Map();
     let graphLoadedFromFile = localStorage.getItem('graphFromFile');
     if (graphLoadedFromFile !== null)
     {
@@ -244,6 +246,57 @@ class Helper
   {
     let loadingOverlay = document.getElementById('loading-overlay-container');
     loadingOverlay.style.display = 'none';
+  }
+  updateLegend()
+  {
+    let legend = document.getElementById('graph-legend');
+    let legendHTML = ''
+    legendHTML += `<span class=\"legendSpan\">Amount of files: ${this.shortNames.size}</span>`
+    legendHTML += `<br>`
+    legendHTML += `<br>`
+    if(this.groups.size > 0)
+    {
+      legendHTML += `<span class=\"legendSpan\">Groups:</span>`
+      legendHTML += `<div class="legendItem">`
+      legendHTML += `<ul>`
+      let color = d3.scaleOrdinal(d3.schemeCategory10);
+      for (const group of this.groups)
+      {
+        console.log(group)
+        legendHTML += `<li><span class=\"legendSpan\">${group[0]} - ${group[1]}:</span><div class="groupColor" style="background: ${color(group[0])}"><div></li>`
+      }
+      legendHTML += `</ul>`
+      legendHTML += `</div>`
+    }
+    legendHTML += `<br>`
+    if (this.pathNodes.length > 0)
+    {
+      legendHTML += `<span class=\"legendSpan\">Selected path:</span>`
+      legendHTML += `<div class="legendItem">`
+      legendHTML += `<ul>`
+      let prefix = this.longestCommonPrefix(this.pathNodes);
+      for (const node of this.pathNodes)
+      {
+        legendHTML += `<li><span class=\"legendSpan\">${this.removePrefix(prefix, node.name)}</span></li>`;
+      }
+      legendHTML += `</ul>`
+      legendHTML += `</div>`
+    }
+    legend.innerHTML = legendHTML;
+  }
+  getLegend()
+  {
+    let legend = document.getElementById('graph-legend');
+    if (legend.style.display === 'block')
+    {
+      legend.style.display = 'none';
+      legend.innerHTML = "";
+    }
+    else
+    {
+      this.updateLegend();
+      legend.style.display = 'block';
+    }
   }
 };
 

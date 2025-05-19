@@ -62,14 +62,14 @@ highlightPath.addEventListener('click', () =>
   canvas.highlightPath(sourceNode.id, destinationNode.id);
   let selectedNodes = d3.selectAll('circle')
   .style("fill", (node) => 
-    helper.pathNodes.includes(node.id) ? "red" : canvas.color(node.group))
+    helper.pathNodes.includes(node) ? "red" : canvas.color(node.group))
   .style("stroke", (node) => 
     {
-      if (helper.pathNodes.includes(node.id))
+      if (helper.pathNodes.includes(node))
       {
-        if (helper.pathNodes[0] === node.id)
+        if (helper.pathNodes[0].id === node.id)
           return "green";
-        else if (helper.pathNodes[helper.pathNodes.length - 1] === node.id)
+        else if (helper.pathNodes[helper.pathNodes.length - 1].id === node.id)
           return "orange";
         else
           return "black";
@@ -78,7 +78,7 @@ highlightPath.addEventListener('click', () =>
         return "#fff";
     })
   .style("stroke-width", (node) => 
-    helper.pathNodes.includes(node.id) ? "2px" : "1.5");
+    helper.pathNodes.includes(node) ? "2px" : "1.5");
 });
 
 const defaultAppearance = document.getElementById('default-appearance');
@@ -146,35 +146,7 @@ clearStorageButton.addEventListener('click', ()=>{
 
 const showLegendButton = document.getElementById('show-legend');
 showLegendButton.addEventListener('click', () => {
-  let legend = document.getElementById('graph-legend');
-  if (legend.style.display === 'block')
-  {
-    legend.style.display = 'none';
-    legend.innerHTML = ""
-  }
-  else
-  {
-    legend.innerHTML += "<span class=\"legendSpan\">Amount of nodes: xxx</span>"
-    legend.innerHTML += "<br>"
-    legend.innerHTML += "<br>"
-    legend.innerHTML += "<span class=\"legendSpan\">Groups:</span>"
-    legend.innerHTML += "<ul>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">group item 1 - [color]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">group item 2 - [color]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">group item 3 - [color]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">group item 4 - [color]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">group item 5 - [color]</span></li>"
-    legend.innerHTML += "</ul>"
-    legend.innerHTML += "<br>"
-    legend.innerHTML += "<span class=\"legendSpan\">Selected path:</span>"
-    legend.innerHTML += "<ul>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">path item 1 - [name]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">path item 2 - [name]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">path item 3 - [name]</span></li>"
-    legend.innerHTML += "<li><span class=\"legendSpan\">path item 4 - [name]</span></li>"
-    legend.innerHTML += "</ul>"
-    legend.style.display = 'block';
-  }
+  helper.getLegend();
 })
 
 const saveGraphButton = document.getElementById('save-graph');

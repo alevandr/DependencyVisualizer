@@ -139,9 +139,9 @@ class Canvas
         event.subject.fy = null;
       }));
 
-      this.node.on('dblclick', (event, d) => {
-        helper.setSourceDestination(d.name); // dark magic, try to redo in another way
-      })
+    this.node.on('dblclick', (event, d) => {
+      helper.setSourceDestination(d.name); // dark magic, try to redo in another way
+    })
   };
 
   findPath(startNodeId, endNodeId)
@@ -190,7 +190,8 @@ class Canvas
       return;
     }
     let pathLinks=[];
-    helper.pathNodes = [path[0]];
+    let firstNode = this.nodes.find(node => node.id === path[0]);
+    helper.pathNodes = [firstNode];
     for (let i = 0; i < path.length - 1; i++) {
       const source = path[i];
       const target = path[i + 1];
@@ -201,7 +202,8 @@ class Canvas
       );
       if (link) {
         pathLinks.push(link);
-        helper.pathNodes.push(target);
+        let node = this.nodes.find(node => node.id === target);
+        helper.pathNodes.push(node);
       }
     }
 
@@ -211,6 +213,7 @@ class Canvas
       pathLinks.includes(link) ? "red" : "#ccc"
     ) // TODO: Change marker-end (arrow) color as well
     .filter((link)=>pathLinks.includes(link)).raise();
+    helper.updateLegend();
   };
 
   setDefaultAppearance()
@@ -238,6 +241,8 @@ class Canvas
     })
     .style("stroke", "#0c2ef0")
     .style("stroke-width", d => Math.sqrt(d.value));
+  helper.pathNodes = [];
+  helper.updateLegend();
   }
 };
 

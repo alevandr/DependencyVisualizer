@@ -9,6 +9,18 @@ class Simulation
     canvas.height = document.getElementById('graph').offsetHeight;
     canvas.color = d3.scaleOrdinal(d3.schemeCategory10);
 
+    for (const node of nodes)
+    {
+      if (helper.groups.has(node.group))
+      {
+        let val = helper.groups.get(node.group);
+        helper.groups.set(node.group, val+1);
+      }
+      else
+      {
+        helper.groups.set(node.group, 1);
+      }
+    }
     canvas.nodes = d3.sort(nodes, (d) => d.group);
     canvas.links = links;
     canvas.linksArr = linksArr;
@@ -52,6 +64,7 @@ class Simulation
     }
     let nodesNames = document.getElementById('all-nodes-names');
     nodesNames.innerHTML = options;
+    helper.updateLegend();
   }
   clear()
   {
@@ -75,6 +88,12 @@ class Simulation
     if(helper.mutuallyLinkedNodes)
     {
       helper.mutuallyLinkedNodes.length = 0;
+    }
+    if (helper.group)
+    {
+      helper.group.clear();
+      let legend = document.getElementById('graph-legend')
+      legend.innerHTML = '';
     }
     helper.setSourceNodeName('');
     helper.setDestinationNodeName('');
