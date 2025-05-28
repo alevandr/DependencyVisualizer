@@ -251,12 +251,10 @@ class Helper
   {
     let legend = document.getElementById('graph-legend');
     let legendHTML = ''
-    legendHTML += `<span class=\"legendSpan\">Amount of files: ${this.shortNames.size}</span>`
-    legendHTML += `<br>`
-    legendHTML += `<br>`
+    legendHTML += `<div class="legendAmountOfFiles"><span class=\"legendAmountOfFilesSpan\">Amount of files: ${this.shortNames.size}</span></div>`
     if(this.groups.size > 0)
     {
-      legendHTML += `<span class=\"legendSpan\">Groups:</span>`
+      legendHTML += `<div class="legendGroupsSpanContainer"><span class=\"legendGroupsSpan\">Groups:</span></div>`
       legendHTML += `<div class="legendItem">`
       legendHTML += `<ul>`
       let color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -271,7 +269,7 @@ class Helper
     legendHTML += `<br>`
     if (this.pathNodes.length > 0)
     {
-      legendHTML += `<span class=\"legendSpan\">Selected path:</span>`
+      legendHTML += `<div class="legendPathSpanContainer"><span class=\"legendPathSpan\">Selected path:</span></div>`
       legendHTML += `<div class="legendItem">`
       legendHTML += `<ul>`
       let prefix = this.longestCommonPrefix(this.pathNodes);
