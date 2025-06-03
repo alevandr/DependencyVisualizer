@@ -135,8 +135,7 @@ getGraphFromFileButton.addEventListener('click', ()=>{
 
 const selectNewProject = document.getElementById('select-new-project');
 selectNewProject.addEventListener('click', async () => {
-  await helper.selectProjectFolder()
-  updateGraph.click();
+  await helper.selectProjectFolder();
 });
 
 const clearStorageButton = document.getElementById('clear-storage');

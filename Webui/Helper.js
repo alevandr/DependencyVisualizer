@@ -171,9 +171,18 @@ class Helper
         return this.getProjectFolder();
     })
     .then(projectFolder => {
-      this.setProjectFolder(projectFolder);
-      this.setProjectName('');
-      this.setGraphLoadedFromFile(false);
+      if (projectFolder === undefined ||
+        (projectFolder === this.getProjectFolder() && projectFolder.size !== 0))
+      {
+        helper.message('New project was NOT selected');
+      }
+      else
+      {
+        this.setProjectFolder(projectFolder);
+        this.setProjectName('');
+        this.setGraphLoadedFromFile(false);
+        document.getElementById('update-graph').click();
+      }
     })
     .catch(error => {
       helper.message('Error:', error);
@@ -260,7 +269,6 @@ class Helper
       let color = d3.scaleOrdinal(d3.schemeCategory10);
       for (const group of this.groups)
       {
-        console.log(group)
         legendHTML += `<li><span class=\"legendSpan\">${group[0]} - ${group[1]}:</span><div class="groupColor" style="background: ${color(group[0])}"><div></li>`
       }
       legendHTML += `</ul>`
